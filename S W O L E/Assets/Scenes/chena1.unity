@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,6 +112,40 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &35939322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100008, guid: 756e2b7657ad4c141b1521a92ef02e3d,
+    type: 3}
+  m_PrefabInstance: {fileID: 996261368}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &35939324
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35939322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 0}
+--- !u!136 &35939325
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 35939322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &52096738
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +160,7 @@ GameObject:
   - component: {fileID: 52096740}
   m_Layer: 0
   m_Name: Mexico
-  m_TagString: Untagged
+  m_TagString: MefakedHaorvim
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -217,7 +251,7 @@ GameObject:
   - component: {fileID: 242462329}
   m_Layer: 0
   m_Name: East
-  m_TagString: Untagged
+  m_TagString: MefakedHaorvim
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -308,7 +342,7 @@ GameObject:
   - component: {fileID: 648180448}
   m_Layer: 0
   m_Name: Kotel
-  m_TagString: Untagged
+  m_TagString: MefakedHaorvim
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -399,6 +433,7 @@ GameObject:
   - component: {fileID: 686163321}
   - component: {fileID: 686163320}
   - component: {fileID: 686163325}
+  - component: {fileID: 686163326}
   m_Layer: 0
   m_Name: Elli
   m_TagString: Player
@@ -427,7 +462,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686163319}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5000001
   m_Height: 2
@@ -486,11 +521,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 686163319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.011208534, y: 0.151, z: -0.0400002}
+  m_LocalPosition: {x: 0.011208534, y: 0.661, z: -0.437}
   m_LocalScale: {x: 1, y: 0.001, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &686163325
 Rigidbody:
@@ -508,6 +543,79 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &686163326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 686163319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51f2d1ab6bee4b6459ef5d59e4bcc843, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &996261368
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 100008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Name
+      value: Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.026856313
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.302
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.824
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 64f53b9f4b7fbda49a89b95231f454e2, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
 --- !u!1 &1277740906
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1419393971
 GameObject:
@@ -591,7 +699,7 @@ GameObject:
   - component: {fileID: 1419393972}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: MefakedHaorvim
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,7 +775,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1602490639
 GameObject:
@@ -683,7 +791,7 @@ GameObject:
   - component: {fileID: 1602490641}
   m_Layer: 0
   m_Name: Northen Wall
-  m_TagString: Untagged
+  m_TagString: MefakedHaorvim
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -792,7 +900,7 @@ Transform:
   - {fileID: 52096739}
   - {fileID: 242462328}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1950498930
 GameObject:
