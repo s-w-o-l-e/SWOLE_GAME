@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ElliCollisionController : MonoBehaviour
 {
+  private HashSet<string> destructionWhitelist = new HashSet<string>() { "MefakedHaorvim" };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,7 @@ public class ElliCollisionController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        if (destructionWhitelist.Contains(collider.gameObject.tag)) return;
         Destroy(collider.gameObject);
     }
 }
