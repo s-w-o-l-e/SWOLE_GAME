@@ -16,13 +16,8 @@ public class ElliCollisionController : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collider)
     {
-        // Destroy(collision.gameObject);
-    }
-
-    void OnTriggerEnter()
-    {
-        Debug.Log("Triggered");
+        Destroy(collider.gameObject);
     }
 }
