@@ -20,7 +20,19 @@ public class ElliCollisionController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if (destructionWhitelist.Contains(collider.gameObject.tag)) return;
+        var collidedGameObject = collider.gameObject;
+        if (destructionWhitelist.Contains(collidedGameObject.tag)) return;
+
+        // Try obtaining the "destroyedObject" part of the object we're going to destroy.
+        // This is necessary for visual effects - everytime we are about to destroy an object,
+        // we want to instantiate a "destroyedObject" that takes care of the animations.
+        var destroyedObject = collidedGameObject.GetComponent<DestructibleObject>().destroyedObject;
+
+        if (destroyedObject != null)
+        {
+            Instantiate(destroyedObject, collidedGameObject.transform.position, collidedGameObject.transform.rotation);
+        }
+
         Destroy(collider.gameObject);
     }
 }
