@@ -24,16 +24,21 @@ public class ElliCollisionController : MonoBehaviour
         var collidedGameObject = collider.gameObject;
         if (destructionWhitelist.Contains(collidedGameObject.tag)) return;
 
+        var elliScale = gameObject.transform.localScale;
+        var collidedGameObjScale = collidedGameObject.transform.localScale;
+
+        if (collidedGameObjScale.x > elliScale.x ||
+            collidedGameObjScale.z > elliScale.z) return;
+
+        Debug.Log("BOX SCALE: X: " + collidedGameObjScale.x + " and Z: " + collidedGameObjScale.z);
+        Debug.Log("Elli SCALE: X: " + elliScale.x + " and Z: " + elliScale.z);
+
         // If there is no "destroyedObject" defined it means we're in the "destroyed" version of our object,
         // and not the original one. Hence, we don't re-spawn a destroyed object infinitely...
-        else
-        {
-            collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
-            Destroy(collidedGameObject, 5.0f);
-            Debug.Log("dead");
-            var collidedGameObjScale = collidedGameObject.transform.localScale;
-            gameObject.transform.localScale += new Vector3(collidedGameObjScale.x, 0, collidedGameObjScale.z) * 5;
-        }
+        collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
+        Destroy(collidedGameObject, 5.0f);
+        Debug.Log("dead");
+        gameObject.transform.localScale += new Vector3(collidedGameObjScale.x, 0, collidedGameObjScale.z) * 5;
     }
 
     /*void OnTriggerEnter(Collider collider)
