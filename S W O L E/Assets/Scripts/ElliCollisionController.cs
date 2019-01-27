@@ -29,6 +29,10 @@ public class ElliCollisionController : MonoBehaviour
         else
         {
             collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
+            Destroy(collidedGameObject, 5.0f);
+            Debug.Log("dead");
+            var collidedGameObjScale = collidedGameObject.transform.localScale;
+            gameObject.transform.localScale += new Vector3(collidedGameObjScale.x, 0, collidedGameObjScale.z) * 5;
         }
     }
 
