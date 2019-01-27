@@ -22,23 +22,35 @@ public class ElliCollisionController : MonoBehaviour
     {
         Debug.Log("mamazav");
         var collidedGameObject = collider.gameObject;
+        Debug.Log(collidedGameObject.tag);
         if (destructionWhitelist.Contains(collidedGameObject.tag)) return;
 
         var elliScale = gameObject.transform.localScale;
         var collidedGameObjScale = collidedGameObject.transform.localScale;
 
-        if (collidedGameObjScale.x > elliScale.x ||
-            collidedGameObjScale.z > elliScale.z) return;
+        // Tried getting the mesh filter, from which i can get the mesh, from which i wanted to get
+        // the canvas (is it the correct hierarchy?) for the scaleFactor. That way we won't need the 0.01 HACK.
+        // var collidedGameObjMesh = collidedGameObject.GetComponent<MeshFilter>().mesh;
+        // var calcedCollidedObjScale = collidedGameObjScale * collidedGameObject.GetComponent<Canvas>().scaleFactor;
 
-        Debug.Log("BOX SCALE: X: " + collidedGameObjScale.x + " and Z: " + collidedGameObjScale.z);
+        // WE ACTUALLY DON'T NEED SCALE FACTOR AT THE MOMENT, SO IT APPEARS!
+
+        // HACK: We hardcodedingly use '0.01' as our scaleFactor. But it's not desirable or anything near that..
+        // var calcedCollidedObjScale = collidedGameObjScale * 1 / 0.01f; // lol
+        var calcedCollidedObjScale = collidedGameObjScale * 1;
+
+        Debug.Log("BOX SCALE: X: " + calcedCollidedObjScale.x + " and Z: " + calcedCollidedObjScale.z);
         Debug.Log("Elli SCALE: X: " + elliScale.x + " and Z: " + elliScale.z);
+
+        if (calcedCollidedObjScale.x > elliScale.x ||
+            calcedCollidedObjScale.z > elliScale.z) return;
 
         // If there is no "destroyedObject" defined it means we're in the "destroyed" version of our object,
         // and not the original one. Hence, we don't re-spawn a destroyed object infinitely...
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
         Destroy(collidedGameObject, 5.0f);
         Debug.Log("dead");
-        gameObject.transform.localScale += new Vector3(collidedGameObjScale.x, 0, collidedGameObjScale.z) * 5;
+        gameObject.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.1f;
     }
 
     /*void OnTriggerEnter(Collider collider)
