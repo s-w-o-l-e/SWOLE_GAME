@@ -5,6 +5,7 @@ using UnityEngine;
 public class ElliCollisionController : MonoBehaviour
 {
   private HashSet<string> destructionWhitelist = new HashSet<string>() { "MefakedHaorvim" };
+  private HashSet<string> collisionWhitelist = new HashSet<string>() { "MapItem" };
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +19,17 @@ public class ElliCollisionController : MonoBehaviour
 
     }
 
+    void OnCollisionEnter(Collision collision) {
+        Debug.Log($"Elli collides with {collision.collider.gameObject.name}");
+    }
+
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("mamazav");
         var collidedGameObject = collider.gameObject;
-        Debug.Log(collidedGameObject.tag);
+        Debug.Log($"Elli triggers with {collidedGameObject.name}");;
         if (destructionWhitelist.Contains(collidedGameObject.tag)) return;
+
+        Physics.IgnoreCollision(collidedGameObject.GetComponent<Collider>(), GetComponent<Collider>());
 
         var elliScale = gameObject.transform.localScale;
         var collidedGameObjScale = collidedGameObject.transform.localScale;
@@ -39,18 +45,19 @@ public class ElliCollisionController : MonoBehaviour
         // var calcedCollidedObjScale = collidedGameObjScale * 1 / 0.01f; // lol
         var calcedCollidedObjScale = collidedGameObjScale * 1;
 
-        Debug.Log("BOX SCALE: X: " + calcedCollidedObjScale.x + " and Z: " + calcedCollidedObjScale.z);
-        Debug.Log("Elli SCALE: X: " + elliScale.x + " and Z: " + elliScale.z);
-
         if (calcedCollidedObjScale.x > elliScale.x ||
             calcedCollidedObjScale.z > elliScale.z) return;
 
         // If there is no "destroyedObject" defined it means we're in the "destroyed" version of our object,
         // and not the original one. Hence, we don't re-spawn a destroyed object infinitely...
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
-        Destroy(collidedGameObject, 5.0f);
-        Debug.Log("dead");
+        Debug.Log($"Destroying {collidedGameObject.name}...");
+        Destroy(collidedGameObject, 2.0f);
         gameObject.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.1f;
+    }
+
+    void OnTriggerExit(Collider collider) {
+
     }
 
     /*void OnTriggerEnter(Collider collider)
