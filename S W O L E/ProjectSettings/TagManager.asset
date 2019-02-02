@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MefakedHaorvim
   - MapItem
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -20,7 +21,7 @@ TagManager:
   - Player
   - Border
   - Elli
-  - 
+  - Enemy
   - 
   - 
   - 
