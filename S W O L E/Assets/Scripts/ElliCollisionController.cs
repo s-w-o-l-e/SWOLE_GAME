@@ -35,7 +35,9 @@ public class ElliCollisionController : MonoBehaviour
             return;
         }*/
 
-        var elliScale = gameObject.transform.parent.transform.localScale;
+        var fixedElliScale = new Vector3(gameObject.transform.parent.transform.localScale.x * gameObject.transform.localScale.x,
+            gameObject.transform.parent.transform.localScale.y * gameObject.transform.localScale.y,
+            gameObject.transform.parent.transform.localScale.z * gameObject.transform.localScale.z);
         var collidedGameObjScale = collidedGameObject.transform.localScale;
 
         // Tried getting the mesh filter, from which i can get the mesh, from which i wanted to get
@@ -49,10 +51,9 @@ public class ElliCollisionController : MonoBehaviour
         // var calcedCollidedObjScale = collidedGameObjScale * 1 / 0.01f; // lol
         var calcedCollidedObjScale = collidedGameObjScale * 1;
 
-        if (calcedCollidedObjScale.x > elliScale.x ||
-            calcedCollidedObjScale.z > elliScale.z) {
+        if (calcedCollidedObjScale.magnitude > fixedElliScale.magnitude) {
                 Debug.Log($"Elli is smaller than {collidedGameObject.name}.");
-                Debug.Log($"Elli size = {elliScale.ToString()}. {collidedGameObject.name} size = {calcedCollidedObjScale.ToString()}");
+                Debug.Log($"Elli size = {fixedElliScale.ToString()}. {collidedGameObject.name} size = {calcedCollidedObjScale.ToString()}");
                 return;
             }
 
