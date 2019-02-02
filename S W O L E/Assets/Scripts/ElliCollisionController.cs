@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ElliCollisionController : MonoBehaviour
 {
-  private HashSet<string> destructionWhitelist = new HashSet<string>() { "MefakedHaorvim" };
-  private HashSet<string> collisionWhitelist = new HashSet<string>() { "MapItem" };
+  // As explainted further in the code - no longer relevant.
+  // private HashSet<string> destructionWhitelist = new HashSet<string>() { "MefakedHaorvim" };
 
     // Start is called before the first frame update
     void Start()
@@ -27,11 +27,15 @@ public class ElliCollisionController : MonoBehaviour
     {
         var collidedGameObject = collider.gameObject;
         Debug.Log($"Elli triggers with {collidedGameObject.name}");;
-        if (destructionWhitelist.Contains(collidedGameObject.tag)) return;
 
-        Physics.IgnoreCollision(collidedGameObject.GetComponent<Collider>(), GetComponent<Collider>());
+        // This piece of code is irrelevant as we now detect collision with a layer-based approach.
+        // We don't have to programatically check for the Tag.
+        /*if (destructionWhitelist.Contains(collidedGameObject.tag)) {
+            Debug.Log("Triggered type of MefakedHaorvim. ignoring!");
+            return;
+        }*/
 
-        var elliScale = gameObject.transform.localScale;
+        var elliScale = gameObject.transform.parent.transform.localScale;
         var collidedGameObjScale = collidedGameObject.transform.localScale;
 
         // Tried getting the mesh filter, from which i can get the mesh, from which i wanted to get
@@ -46,14 +50,16 @@ public class ElliCollisionController : MonoBehaviour
         var calcedCollidedObjScale = collidedGameObjScale * 1;
 
         if (calcedCollidedObjScale.x > elliScale.x ||
-            calcedCollidedObjScale.z > elliScale.z) return;
+            calcedCollidedObjScale.z > elliScale.z) {
+                Debug.Log($"Elli is smaller than {collidedGameObject.name}.");
+                Debug.Log($"Elli size = {elliScale.ToString()}. {collidedGameObject.name} size = {calcedCollidedObjScale.ToString()}");
+                return;
+            }
 
-        // If there is no "destroyedObject" defined it means we're in the "destroyed" version of our object,
-        // and not the original one. Hence, we don't re-spawn a destroyed object infinitely...
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
         Debug.Log($"Destroying {collidedGameObject.name}...");
         Destroy(collidedGameObject, 2.0f);
-        gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.1f;
+        gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.5f;
     }
 
     void OnTriggerExit(Collider collider) {
