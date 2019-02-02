@@ -56,9 +56,11 @@ public class ElliCollisionController : MonoBehaviour
                 return;
             }
 
+        var gameObjectToDestroy = collidedGameObject.tag == "Enemy" ? collidedGameObject.transform.parent.gameObject : collidedGameObject;
+
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
-        Debug.Log($"Destroying {collidedGameObject.name}...");
-        Destroy(collidedGameObject, 2.0f);
+        Debug.Log($"Destroying {gameObjectToDestroy.name}...");
+        Destroy(gameObjectToDestroy, 2.0f);
         gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.5f;
     }
 
