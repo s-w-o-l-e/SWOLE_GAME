@@ -12,18 +12,24 @@ public class StateController : MonoBehaviour
     public Transform eyes;
     public State remainState;
     public List<Transform> wayPointList;
+    public Rigidbody ShinyBoomBoom;                   // Prefab of the bullet.
+    public AudioSource ShootingAudio;
 
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform Target;
     [HideInInspector] public float stateTimeElapsed;
 
+    private float fireLaunchForce = 5f;
+    private float nextFireTime;
     private bool aiActive;
+    [HideInInspector] public int bullet_layer_mask;
 
     private void Start()
     {
         aiActive = true;
         navMeshAgent.enabled = true;
+        bullet_layer_mask = LayerMask.GetMask("Player");
     }
 
     void Awake()
@@ -67,5 +73,23 @@ public class StateController : MonoBehaviour
     private void OnExitState()
     {
         stateTimeElapsed = 0;
+    }
+
+    public void Fire()
+    {
+        if (Time.time > nextFireTime)
+        {
+            nextFireTime = Time.time + stats.attackRate;
+
+            // Create an instance of the shell and store a reference to it's rigidbody.
+            Rigidbody shellInstance =
+                Instantiate(ShinyBoomBoom, eyes.position, navMeshAgent.transform.rotation) as Rigidbody;
+
+            // Set the shell's velocity to the launch force in the fire position's forward direction.
+            shellInstance.velocity = fireLaunchForce * navMeshAgent.transform.forward;
+
+            // Change the clip to the firing clip and play it.
+            ShootingAudio.Play();
+        }
     }
 }

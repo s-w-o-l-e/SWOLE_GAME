@@ -16,12 +16,12 @@ public class AttackAction : AIAction
 
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.stats.attackRange, Color.red);
 
-        if (Physics.SphereCast(controller.eyes.position, controller.stats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.stats.attackRange)
+        if (Physics.SphereCast(controller.eyes.position, controller.stats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.stats.attackRange, controller.bullet_layer_mask)
             && hit.collider.CompareTag("Player"))
         {
             if (controller.CheckIfCountDownElapsed(controller.stats.attackRate))
             {
-                Debug.Log("Attacked Player");
+                controller.Fire();
             }
         }
     }

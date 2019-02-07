@@ -16,10 +16,9 @@ public class LookDecision : Decision
     private bool Look(StateController controller)
     {
         RaycastHit hit;
-
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.stats.lookRange, Color.green);
 
-        if (Physics.SphereCast(controller.eyes.position, controller.stats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.stats.lookRange) 
+        if (Physics.SphereCast(controller.eyes.position, controller.stats.lookSphereCastRadius, controller.eyes.forward, out hit, controller.stats.lookRange, controller.bullet_layer_mask) 
             && hit.collider.CompareTag("Player"))
         {
             controller.Target = hit.transform;

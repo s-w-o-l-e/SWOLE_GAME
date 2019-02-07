@@ -12,7 +12,17 @@ public class ChaseAction : AIAction
 
     private void Chase(StateController controller)
     {
-        controller.navMeshAgent.destination = controller.Target.position;
-        controller.navMeshAgent.isStopped = false;
+        var dist = Vector3.Distance(controller.Target.position, controller.navMeshAgent.transform.position);
+
+        // Check if we still want get closer
+        if (dist < controller.stats.chaseDistance)
+        {
+            controller.navMeshAgent.destination = controller.navMeshAgent.transform.position;
+        }
+        else
+        {
+            controller.navMeshAgent.destination = controller.Target.position;
+            controller.navMeshAgent.isStopped = false;
+        }
     }
 }
