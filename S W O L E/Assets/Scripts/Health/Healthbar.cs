@@ -21,12 +21,19 @@ public class Healthbar : MonoBehaviour
     private void TakeDamage(float damage)
     {
         hitpoint -= damage;
+
+        if (hitpoint <= 0) {
+            hitpoint = 0;
+            Debug.Log("rip elli cu in petah tikwa lol");
+        }
+
         UpdateHealthbar();
     }
 
     private void HealDamage(float heal)
     {
         hitpoint += heal;
+        hitpoint = hitpoint > maxHitpoint ? maxHitpoint: hitpoint;
         UpdateHealthbar();
     }
 
