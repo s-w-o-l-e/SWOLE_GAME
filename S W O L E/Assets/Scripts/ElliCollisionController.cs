@@ -25,6 +25,13 @@ public class ElliCollisionController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
+        // TODO - LOL REMOVE THIS FUCKING SHIT
+        if (collider.gameObject.tag == "Zumbi")
+        {
+            gameObject.transform.parent.SendMessage("TakeDamage", 5.0f);
+        }
+        // TODO - REMOVE THIS LOOL NEPHEW
+
         var collidedGameObject = collider.gameObject;
         Debug.Log($"Elli triggers with {collidedGameObject.name}");;
 
@@ -63,6 +70,7 @@ public class ElliCollisionController : MonoBehaviour
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
         Destroy(gameObjectToDestroy, 2.0f);
         gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.5f;
+        gameObject.transform.parent.SendMessage("HealDamage", 1.0f);
     }
 
     void OnTriggerExit(Collider collider) {
