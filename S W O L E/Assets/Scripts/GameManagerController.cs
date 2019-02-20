@@ -41,6 +41,10 @@ public class GameManagerController : MonoBehaviour
     void OnEnable()
     {
         EventManagerController.StartListening("HealDamage", () => {playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);});
-        EventManagerController.StartListening("TakeDamage", () => {playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);});
+        EventManagerController.StartListening("TakeDamage", () =>
+        {
+            playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);
+            playerhomo.GetComponent<AudioSource>().Play();
+        });
     }
 }

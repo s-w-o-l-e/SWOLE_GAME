@@ -15,16 +15,17 @@ public class BulletController : MonoBehaviour
         //Destroy(gameObject, m_MaxLifeTime);
     }
 
-    private void OnTriggerEnter(Collider col)
+    private void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.tag == "Player")
+        if (col.collider.gameObject.tag == "Player")
         {
             // Reduce health from player
-            
+
             // Play the hit sound effect on the player because were destroying this object
 
             // Destroy the shell.
             Destroy(gameObject);
+            EventManagerController.TriggerEvent("TakeDamage");
         }
     }
 }

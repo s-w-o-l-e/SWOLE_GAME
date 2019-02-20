@@ -26,15 +26,6 @@ public class ElliCollisionController : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        // TODO - LOL REMOVE THIS FUCKING SHIT
-        if (collider.gameObject.tag == "Zumbi")
-        {
-            // gameObject.transform.parent.SendMessage("TakeDamage", 5.0f);
-            EventManagerController.TriggerEvent("TakeDamage");
-
-        }
-        // TODO - REMOVE THIS LOOL NEPHEW
-
         var collidedGameObject = collider.gameObject;
         Debug.Log($"Elli triggers with {collidedGameObject.name}");;
 

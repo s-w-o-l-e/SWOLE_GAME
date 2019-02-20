@@ -49,4 +49,17 @@ public class PlayerController : MonoBehaviour
             rb.transform.localEulerAngles = new Vector3(0.0F, yaw, 0.0F);
         }
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        Debug.Log("sssup");
+        Debug.Log(col.collider.gameObject.tag);
+        // TODO - LOL REMOVE THIS FUCKING SHIT
+        if (col.collider.gameObject.tag == "Zumbi")
+        {
+            col.collider.gameObject.GetComponent<Rigidbody>().useGravity = true;
+            Destroy(col.collider.gameObject, 5.0f);
+        }
+        // TODO - REMOVE THIS LOOL NEPHEW
+    }
 }
