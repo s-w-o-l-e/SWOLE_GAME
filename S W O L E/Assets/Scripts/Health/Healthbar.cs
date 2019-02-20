@@ -18,7 +18,7 @@ public class Healthbar : MonoBehaviour
         ratioText.text = (ratio * 100).ToString() + '%';
     }
 
-    private void TakeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         hitpoint -= damage;
 
@@ -30,7 +30,7 @@ public class Healthbar : MonoBehaviour
         UpdateHealthbar();
     }
 
-    private void HealDamage(float heal)
+    public void HealDamage(float heal)
     {
         hitpoint += heal;
         hitpoint = hitpoint > maxHitpoint ? maxHitpoint: hitpoint;

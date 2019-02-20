@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ElliCollisionController : MonoBehaviour
 {
@@ -28,7 +29,9 @@ public class ElliCollisionController : MonoBehaviour
         // TODO - LOL REMOVE THIS FUCKING SHIT
         if (collider.gameObject.tag == "Zumbi")
         {
-            gameObject.transform.parent.SendMessage("TakeDamage", 5.0f);
+            // gameObject.transform.parent.SendMessage("TakeDamage", 5.0f);
+            EventManagerController.TriggerEvent("TakeDamage");
+
         }
         // TODO - REMOVE THIS LOOL NEPHEW
 
@@ -62,7 +65,7 @@ public class ElliCollisionController : MonoBehaviour
                 Debug.Log($"Elli is smaller than {collidedGameObject.name}.");
                 Debug.Log($"Elli size = {fixedElliScale.ToString()}. {collidedGameObject.name} size = {calcedCollidedObjScale.ToString()}");
                 return;
-            }
+        }
 
         var gameObjectToDestroy = collidedGameObject.tag == "Enemy" ? collidedGameObject.transform.parent.gameObject : collidedGameObject;
 
@@ -70,7 +73,8 @@ public class ElliCollisionController : MonoBehaviour
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
         Destroy(gameObjectToDestroy, 2.0f);
         gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.5f;
-        gameObject.transform.parent.SendMessage("HealDamage", 1.0f);
+        EventManagerController.TriggerEvent("HealDamage");
+        // gameObject.transform.parent.SendMessage("HealDamage", 1.0f);
     }
 
     void OnTriggerExit(Collider collider) {

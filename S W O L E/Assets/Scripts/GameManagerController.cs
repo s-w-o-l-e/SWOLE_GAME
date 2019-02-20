@@ -25,7 +25,7 @@ public class GameManagerController : MonoBehaviour
             topCamIsAlsoMainCam.enabled = !topCamIsAlsoMainCam.enabled;
             fpsCam.enabled = !fpsCam.enabled;
             playerhomo.GetComponent<PlayerController>().enableRotation = fpsCam.enabled;
-            
+
             if (topCamIsAlsoMainCam.enabled)
             {
                 smdlastRotation = playerhomo.GetComponent<Rigidbody>().transform.localEulerAngles;
@@ -36,5 +36,11 @@ public class GameManagerController : MonoBehaviour
                 playerhomo.GetComponent<Rigidbody>().transform.localEulerAngles = smdlastRotation;
             }
         }
+    }
+
+    void OnEnable()
+    {
+        EventManagerController.StartListening("HealDamage", () => {playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);});
+        EventManagerController.StartListening("TakeDamage", () => {playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);});
     }
 }
