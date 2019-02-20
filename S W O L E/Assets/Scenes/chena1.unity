@@ -1502,6 +1502,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   rotationSpeed: 5
+  enableRotation: 0
 --- !u!114 &899966262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1803,7 +1804,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fpsCam: {fileID: 583073094}
-  topCam: {fileID: 450992133}
+  topCamIsAlsoMainCam: {fileID: 450992133}
+  playerhomo: {fileID: 899966258}
 --- !u!4 &1040583990
 Transform:
   m_ObjectHideFlags: 0
@@ -2520,7 +2522,7 @@ PrefabInstance:
     - target: {fileID: 864912564572135644, guid: ce59119c60ade064d9b69f4940774ed4,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: MainCamera
       objectReference: {fileID: 0}
     - target: {fileID: 864912564084430709, guid: ce59119c60ade064d9b69f4940774ed4,
         type: 3}
