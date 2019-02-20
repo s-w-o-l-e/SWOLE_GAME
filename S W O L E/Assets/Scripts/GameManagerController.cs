@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class GameManagerController : MonoBehaviour
     public Camera topCamIsAlsoMainCam;
     public GameObject playerhomo;
     private Vector3 smdlastRotation;
+    private bool hasGameEnded = false;
+
+    public GameObject levelFailedUI;
+    public GameObject levelFinishedUI;
 
     // Start is called before the first frame update
     void Start()
@@ -46,5 +51,24 @@ public class GameManagerController : MonoBehaviour
             playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);
             playerhomo.GetComponent<AudioSource>().Play();
         });
+        EventManagerController.StartListening("GameOver", () =>
+        {
+            if (hasGameEnded)
+            {
+                return;
+            }
+
+            this.levelFailedUI.SetActive(true);
+
+            hasGameEnded = false;
+
+            Debug.Log("Game over losers :)");
+            Invoke("Restart", 2.0f);
+        });
+    }
+
+    void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -25,6 +25,7 @@ public class Healthbar : MonoBehaviour
         if (hitpoint <= 0) {
             hitpoint = 0;
             Debug.Log("rip elli cu in petah tikwa lol");
+            EventManagerController.TriggerEvent("GameOver");
         }
 
         UpdateHealthbar();
