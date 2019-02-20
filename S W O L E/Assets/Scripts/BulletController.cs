@@ -10,20 +10,18 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // If it isn't destroyed by then, destroy the shell after it's lifetime.
-        Destroy(gameObject, m_MaxLifeTime);
+        // If it isn't destroyed by then, destroy the bullet after it's lifetime.
+        // Need to find a way to shoot Prefab and not gameobject from the scene because it gets destroyed and nobody can shoot
+        //Destroy(gameObject, m_MaxLifeTime);
     }
 
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "Player")
         {
-            //Rigidbody target = col.GetComponent<Rigidbody>();
             // Reduce health from player
             
-            // Play the explosion sound effect.
-            // Should be on the player
-            m_ExplosionAudio.Play();
+            // Play the hit sound effect on the player because were destroying this object
 
             // Destroy the shell.
             Destroy(gameObject);
