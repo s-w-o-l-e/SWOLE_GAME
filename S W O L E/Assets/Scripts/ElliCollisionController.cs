@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 
 public class ElliCollisionController : MonoBehaviour
@@ -59,6 +60,12 @@ public class ElliCollisionController : MonoBehaviour
         }
 
         var gameObjectToDestroy = collidedGameObject.tag == "Enemy" ? collidedGameObject.transform.parent.gameObject : collidedGameObject;
+
+        if (collider.gameObject.tag == "Zumbi")
+        {
+            collider.gameObject.GetComponent<StateController>().enabled = false;
+            Destroy(collider.gameObject.GetComponent<NavMeshAgent>());
+        }
 
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
