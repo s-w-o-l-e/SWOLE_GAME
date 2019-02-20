@@ -45,7 +45,7 @@ public class GameManagerController : MonoBehaviour
 
     void OnEnable()
     {
-        EventManagerController.StartListening("HealDamage", () => {playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);});
+        EventManagerController.StartListening("SwallowMapItem", () => {playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);});
         EventManagerController.StartListening("TakeDamage", () =>
         {
             playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);
@@ -60,15 +60,24 @@ public class GameManagerController : MonoBehaviour
 
             this.levelFailedUI.SetActive(true);
 
-            hasGameEnded = false;
+            hasGameEnded = true;;
 
             Debug.Log("Game over losers :)");
-            Invoke("Restart", 2.0f);
+
+            StartCoroutine(WaitForKeyPress(KeyCode.F));
         });
+    }
+
+    IEnumerator WaitForKeyPress(KeyCode keyCode)
+    {
+        Debug.Log("OMG LOOL");
+        yield return new WaitUntil(() => Input.GetKeyUp(keyCode));
+        Restart();
     }
 
     void Restart()
     {
+        Debug.Log("omg stfu");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

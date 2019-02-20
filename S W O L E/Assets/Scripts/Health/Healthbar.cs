@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Healthbar : MonoBehaviour
 {
+    private bool isGameOver = false;
     public Image currentHealthbar;
     public Text ratioText;
 
@@ -20,11 +21,17 @@ public class Healthbar : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if (isGameOver)
+        {
+            return;
+        }
+
         hitpoint -= damage;
 
         if (hitpoint <= 0) {
             hitpoint = 0;
             Debug.Log("rip elli cu in petah tikwa lol");
+            isGameOver = true;
             EventManagerController.TriggerEvent("GameOver");
         }
 
