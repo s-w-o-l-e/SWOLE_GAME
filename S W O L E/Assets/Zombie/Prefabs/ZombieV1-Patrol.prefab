@@ -283,7 +283,7 @@ GameObject:
   - component: {fileID: 702019288}
   - component: {fileID: 702019289}
   m_Layer: 13
-  m_Name: ZombieV1
+  m_Name: ZombieV1-Patrol
   m_TagString: Zumbi
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,6 +460,7 @@ MonoBehaviour:
   nextWayPoint: 0
   Target: {fileID: 0}
   stateTimeElapsed: 0
+  fireLaunchForce: 20
   bullet_layer_mask: 0
 --- !u!195 &2932325072692853609
 NavMeshAgent:

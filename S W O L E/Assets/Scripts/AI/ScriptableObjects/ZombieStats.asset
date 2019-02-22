@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: ZombieStats
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  lookRange: 10
+  lookRange: 20
   lookSphereCastRadius: 1
-  attackRange: 10
+  attackRange: 20
   attackRate: 0.1
   attackForce: 15
   attackDamage: 50

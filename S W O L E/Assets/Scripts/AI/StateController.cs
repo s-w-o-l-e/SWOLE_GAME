@@ -20,7 +20,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Transform Target;
     [HideInInspector] public float stateTimeElapsed;
 
-    private float fireLaunchForce = 5f;
+    public float fireLaunchForce = 5f;
     private float nextFireTime;
     private bool aiActive;
     [HideInInspector] public int bullet_layer_mask;
