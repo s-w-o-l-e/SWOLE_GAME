@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2444,11 +2444,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 359023570281018441, guid: 039f451a6551568428b9b313f676dab0,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 359023569667919157, guid: 039f451a6551568428b9b313f676dab0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2554,6 +2549,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 359023570281018441, guid: 039f451a6551568428b9b313f676dab0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039f451a6551568428b9b313f676dab0, type: 3}
 --- !u!224 &759544126 stripped
@@ -2562,6 +2562,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 759544125}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &759544127 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 359023568571249882, guid: 039f451a6551568428b9b313f676dab0,
+    type: 3}
+  m_PrefabInstance: {fileID: 759544125}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &777539753
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2784,7 +2796,7 @@ PrefabInstance:
     - target: {fileID: 899966262, guid: ce59119c60ade064d9b69f4940774ed4, type: 3}
       propertyPath: ratioText
       value: 
-      objectReference: {fileID: 1508462875}
+      objectReference: {fileID: 759544127}
     - target: {fileID: 899966262, guid: ce59119c60ade064d9b69f4940774ed4, type: 3}
       propertyPath: currentHealthbar
       value: 
@@ -4951,18 +4963,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1774337710}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1508462875 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 359023570193859911, guid: 039f451a6551568428b9b313f676dab0,
-    type: 3}
-  m_PrefabInstance: {fileID: 759544125}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1511703093 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 165387293, guid: bf351eb775b1f3243a9a683f0d85b0f9,
