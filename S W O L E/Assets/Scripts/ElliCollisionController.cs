@@ -67,6 +67,7 @@ public class ElliCollisionController : MonoBehaviour
             Destroy(collider.gameObject.GetComponent<NavMeshAgent>());
         }
 
+        collidedGameObject.GetComponent<Rigidbody>().isKinematic = false;
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
         Destroy(gameObjectToDestroy, 2.0f);
