@@ -12,7 +12,7 @@ public class BulletController : MonoBehaviour
     {
         // If it isn't destroyed by then, destroy the bullet after it's lifetime.
         // Need to find a way to shoot Prefab and not gameobject from the scene because it gets destroyed and nobody can shoot
-        //Destroy(gameObject, m_MaxLifeTime);
+        Destroy(gameObject, m_MaxLifeTime);
     }
 
     private void OnCollisionEnter(Collision col)
