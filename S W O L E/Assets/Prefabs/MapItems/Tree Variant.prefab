@@ -12,7 +12,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -39,7 +39,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
       propertyPath: m_Name
-      value: Tree
+      value: Tree Variant
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
       propertyPath: m_Layer
@@ -109,43 +109,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2e7c0e0d576eb844396d70de9afb5cdb, type: 2}
+    - target: {fileID: 100004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_TagString
+      value: MapItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_TagString
+      value: MapItem
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_TagString
+      value: MapItem
+      objectReference: {fileID: 0}
     - target: {fileID: 2300004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2e7c0e0d576eb844396d70de9afb5cdb, type: 2}
-    - target: {fileID: 100004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_TagString
-      value: MapItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_TagString
-      value: MapItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 100012, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
-      propertyPath: m_TagString
-      value: MapItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300002, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+    - target: {fileID: 2300000, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2e7c0e0d576eb844396d70de9afb5cdb, type: 2}
     - target: {fileID: 2300006, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2e7c0e0d576eb844396d70de9afb5cdb, type: 2}
+    - target: {fileID: 2300002, guid: 756e2b7657ad4c141b1521a92ef02e3d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2e7c0e0d576eb844396d70de9afb5cdb, type: 2}

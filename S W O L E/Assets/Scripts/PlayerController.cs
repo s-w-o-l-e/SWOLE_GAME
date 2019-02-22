@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
         float y = transform.localPosition.y;
         var ogRotation = rb.transform.localEulerAngles;
 
+
         // move relative to blue arrow
         if (Input.GetKey(KeyCode.W))
         {
@@ -48,6 +49,23 @@ public class PlayerController : MonoBehaviour
             // rotate object to face mouse direction
             rb.transform.localEulerAngles = new Vector3(0.0F, yaw, 0.0F);
         }
+
+        if (transform.localPosition.z <= -10)
+        {
+            transform.localPosition = new Vector3(transform.position.x, transform.position.y, -10);
+        }
+        if (transform.localPosition.z >= 49)
+        {
+            transform.localPosition = new Vector3(transform.position.x, transform.position.y, 49);
+        }
+        if (transform.localPosition.x <= -23)
+        {
+            transform.localPosition = new Vector3(-23, transform.position.y, transform.position.z);
+        }
+        if (transform.localPosition.x >= 47)
+        {
+            transform.localPosition = new Vector3(47, transform.position.y, transform.position.z);
+        }
     }
 
     void OnCollisionEnter(Collision col)
@@ -60,6 +78,5 @@ public class PlayerController : MonoBehaviour
             col.collider.gameObject.GetComponent<Rigidbody>().useGravity = true;
             Destroy(col.collider.gameObject, 5.0f);
         }
-        // TODO - REMOVE THIS LOOL NEPHEW
     }
 }
