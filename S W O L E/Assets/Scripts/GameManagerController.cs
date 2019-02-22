@@ -45,7 +45,30 @@ public class GameManagerController : MonoBehaviour
 
     void OnEnable()
     {
-        EventManagerController.StartListening("SwallowMapItem", () => {playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);});
+        EventManagerController.StartListening("SwallowMapItem", () =>
+        {
+            playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);
+
+            var enemies = GameObject.FindGameObjectsWithTag("Zumbi");
+            if (enemies.Length > 0)
+            {
+                return;
+            }
+
+            if (hasGameEnded)
+            {
+                return;
+            }
+
+            this.levelFinishedUI.SetActive(true);
+
+            hasGameEnded = true;;
+
+            Debug.Log("gg faggots :)");
+
+            StartCoroutine(WaitForKeyPress(KeyCode.Return));
+        }
+        );
         EventManagerController.StartListening("TakeDamage", () =>
         {
             playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);
