@@ -15,12 +15,16 @@ public class GameManagerController : MonoBehaviour
     public GameObject levelFailedUI;
     public GameObject levelFinishedUI;
 
+    private int zumbiCount;
+
     // Start is called before the first frame update
     void Start()
     {
         topCamIsAlsoMainCam.enabled = true;
         fpsCam.enabled = false;
         playerhomo.GetComponent<PlayerController>().enableRotation = false;
+
+        zumbiCount = GameObject.FindGameObjectsWithTag("Zumbi").Length;
     }
 
     // Update is called once per frame
@@ -46,30 +50,31 @@ public class GameManagerController : MonoBehaviour
 
     void OnEnable()
     {
-        EventManagerController.StartListening("SwallowMapItem", () =>
+        EventManagerController.StartListening("SwallowZumbi", () =>
         {
-            playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);
-
-            var enemies = GameObject.FindGameObjectsWithTag("Zumbi");
-            if (enemies.Length > 0)
-            {
-                return;
-            }
-
             if (hasGameEnded)
             {
                 return;
             }
 
-            this.levelFinishedUI.SetActive(true);
+            zumbiCount--;
 
-            hasGameEnded = true;
+            if (zumbiCount == 0)
+            {
+                this.levelFinishedUI.SetActive(true);
 
-            Debug.Log("gg faggots :)");
+                hasGameEnded = true;
 
-            StartCoroutine(WaitForKeyPress(KeyCode.Return, () =>  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1)));
-        }
-        );
+                Debug.Log("gg faggots :)");
+
+                StartCoroutine(WaitForKeyPress(KeyCode.Return, () =>  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1)));
+            }
+
+        });
+        EventManagerController.StartListening("SwallowMapItem", () =>
+        {
+            playerhomo.GetComponent<Healthbar>().HealDamage(1.0f);
+        });
         EventManagerController.StartListening("TakeDamage", () =>
         {
             playerhomo.GetComponent<Healthbar>().TakeDamage(5.0f);

@@ -65,6 +65,7 @@ public class ElliCollisionController : MonoBehaviour
         {
             collider.gameObject.GetComponent<StateController>().enabled = false;
             Destroy(collider.gameObject.GetComponent<NavMeshAgent>());
+            EventManagerController.TriggerEvent("SwallowZumbi");
         }
 
         collidedGameObject.GetComponent<Rigidbody>().isKinematic = false;
