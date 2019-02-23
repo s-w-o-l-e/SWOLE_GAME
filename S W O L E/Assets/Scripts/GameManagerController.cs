@@ -1,3 +1,4 @@
+using System;
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -66,7 +67,7 @@ public class GameManagerController : MonoBehaviour
 
             Debug.Log("gg faggots :)");
 
-            StartCoroutine(WaitForKeyPress(KeyCode.Return));
+            StartCoroutine(WaitForKeyPress(KeyCode.Return, () =>  SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1)));
         }
         );
         EventManagerController.StartListening("TakeDamage", () =>
@@ -87,15 +88,15 @@ public class GameManagerController : MonoBehaviour
 
             Debug.Log("Game over losers :)");
 
-            StartCoroutine(WaitForKeyPress(KeyCode.F));
+            StartCoroutine(WaitForKeyPress(KeyCode.F, () => Restart()));
         });
     }
 
-    IEnumerator WaitForKeyPress(KeyCode keyCode)
+    IEnumerator WaitForKeyPress(KeyCode keyCode, Action callback)
     {
         Debug.Log("OMG LOOL");
         yield return new WaitUntil(() => Input.GetKeyUp(keyCode));
-        Restart();
+        callback();
     }
 
     void Restart()
