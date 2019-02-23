@@ -63,7 +63,7 @@ public class GameManagerController : MonoBehaviour
 
             this.levelFinishedUI.SetActive(true);
 
-            hasGameEnded = true;;
+            hasGameEnded = true;
 
             Debug.Log("gg faggots :)");
 
@@ -84,7 +84,7 @@ public class GameManagerController : MonoBehaviour
 
             this.levelFailedUI.SetActive(true);
 
-            hasGameEnded = true;;
+            hasGameEnded = true;
 
             Debug.Log("Game over losers :)");
 

@@ -28,7 +28,7 @@ public class ElliCollisionController : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         var collidedGameObject = collider.gameObject;
-        Debug.Log($"Elli triggers with {collidedGameObject.name}");;
+        Debug.Log($"Elli triggers with {collidedGameObject.name}");
 
         // This piece of code is irrelevant as we now detect collision with a layer-based approach.
         // We don't have to programatically check for the Tag.
