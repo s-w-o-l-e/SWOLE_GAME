@@ -27,5 +27,9 @@ public class BulletController : MonoBehaviour
             Destroy(gameObject);
             EventManagerController.TriggerEvent("TakeDamage");
         }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
