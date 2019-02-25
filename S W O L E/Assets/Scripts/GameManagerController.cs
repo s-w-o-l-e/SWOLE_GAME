@@ -95,6 +95,12 @@ public class GameManagerController : MonoBehaviour
 
             StartCoroutine(WaitForKeyPress(KeyCode.F, () => Restart()));
         });
+        EventManagerController.StartListening("EndGame", () =>
+        {
+            Debug.Log("damn you succ good bb <3");
+
+            StartCoroutine(WaitForKeyPress(KeyCode.Return, () => SceneManager.LoadScene(0)));
+        });
     }
 
     IEnumerator WaitForKeyPress(KeyCode keyCode, Action callback)
