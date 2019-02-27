@@ -29,6 +29,11 @@ public class BulletController : MonoBehaviour
         }
         else
         {
+            if (col.collider.gameObject.tag == "BRICC")
+            {
+                col.collider.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            }
+            
             Destroy(gameObject);
         }
     }

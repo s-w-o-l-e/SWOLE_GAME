@@ -70,9 +70,19 @@ public class ElliCollisionController : MonoBehaviour
 
         collidedGameObject.GetComponent<Rigidbody>().isKinematic = false;
         collidedGameObject.GetComponent<Rigidbody>().useGravity = true;
+
+        var scaleFactor = 0.2f;
+
+        if (collidedGameObject.tag == "BRICC")
+        {
+            Debug.Log("BRICCD");
+            collidedGameObject.layer = 8;
+            scaleFactor = 0.01f;
+        }
+
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
         Destroy(gameObjectToDestroy, 2.0f);
-        gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * 0.2f;
+        gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * scaleFactor;
         EventManagerController.TriggerEvent("SwallowMapItem");
         // gameObject.transform.parent.SendMessage("HealDamage", 1.0f);
     }
