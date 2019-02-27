@@ -77,7 +77,7 @@ public class ElliCollisionController : MonoBehaviour
         {
             Debug.Log("BRICCD");
             collidedGameObject.layer = 8;
-            scaleFactor = 0.01f;
+            scaleFactor = 0.0045f;
         }
 
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
