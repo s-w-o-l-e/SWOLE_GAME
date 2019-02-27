@@ -81,7 +81,7 @@ public class ElliCollisionController : MonoBehaviour
         }
 
         Debug.Log($"Destroying {gameObjectToDestroy.name}...");
-        Destroy(gameObjectToDestroy, 2.0f);
+        Destroy(gameObjectToDestroy, 20.0f);
         gameObject.transform.parent.transform.localScale += new Vector3(calcedCollidedObjScale.x, 0, calcedCollidedObjScale.z) * scaleFactor;
         EventManagerController.TriggerEvent("SwallowMapItem");
         // gameObject.transform.parent.SendMessage("HealDamage", 1.0f);
